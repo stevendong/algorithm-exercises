@@ -1,8 +1,8 @@
-import { Node } from './Node.class.es6'
+import { Node } from './Node.class.es6.js'
 
 export class BST {
+  _count = 1;
   root = null;
-  _count = 0;
 
   constructor(){}
 
