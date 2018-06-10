@@ -32,16 +32,19 @@ export class BST {
     }
   }
 
-  inOrder(node = this.root){
+  inOrder(node = this.root, callback){
     if(node !== null){
       this._count++;
-      this.inOrder(node.left);
-      this.inOrder(node.right);
+      this.inOrder(node.left, callback);
+      if(callback){
+        callback(node);
+      }
+      this.inOrder(node.right, callback);
     }
   }
 
   showNodeCount(node = this.root){
-    this.count = 1;
+    this._count = 0;
     this.inOrder();
     return this._count;
   }
@@ -110,7 +113,7 @@ export class BST {
   }
 
   update(data){
-    let targetNode = this.find(data);
+    let targetNode = this.findNode(data);
     targetNode.count++;
     return targetNode;
   }
